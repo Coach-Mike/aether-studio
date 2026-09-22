@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Instrument_Sans, Instrument_Serif } from "next/font/google";
+import { MonographCursor } from "@/components/monograph-cursor";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { site } from "@/lib/site";
@@ -27,7 +28,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — Digital flagships`,
+    default: `${site.name} — Commissioned sites`,
     template: `%s — ${site.name}`,
   },
   description: site.tagline,
@@ -70,6 +71,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <div className="grain" aria-hidden />
+        <MonographCursor />
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />
