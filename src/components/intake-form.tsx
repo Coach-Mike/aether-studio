@@ -39,21 +39,39 @@ export function IntakeForm() {
     <form onSubmit={onSubmit} className="grid gap-6">
       <label className="grid gap-2 text-[11px] uppercase tracking-[0.2em] text-brass">
         Name
-        <input required name="name" autoComplete="name" className="border-b border-brass/25 bg-transparent py-3 text-base tracking-normal text-paper outline-none focus:border-brass" />
+        <input
+          required
+          name="name"
+          autoComplete="name"
+          className="border-b border-brass/25 bg-transparent py-3 text-base tracking-normal text-paper outline-none focus:border-brass"
+        />
       </label>
       <label className="grid gap-2 text-[11px] uppercase tracking-[0.2em] text-brass">
         Email
-        <input required type="email" name="email" autoComplete="email" className="border-b border-brass/25 bg-transparent py-3 text-base tracking-normal text-paper outline-none focus:border-brass" />
+        <input
+          required
+          type="email"
+          name="email"
+          autoComplete="email"
+          className="border-b border-brass/25 bg-transparent py-3 text-base tracking-normal text-paper outline-none focus:border-brass"
+        />
       </label>
       <label className="grid gap-2 text-[11px] uppercase tracking-[0.2em] text-brass">
         Company + URL
-        <input required name="company" className="border-b border-brass/25 bg-transparent py-3 text-base tracking-normal text-paper outline-none focus:border-brass" />
+        <input
+          required
+          name="company"
+          className="border-b border-brass/25 bg-transparent py-3 text-base tracking-normal text-paper outline-none focus:border-brass"
+        />
       </label>
       <fieldset className="grid gap-3">
         <legend className="text-[11px] uppercase tracking-[0.2em] text-brass">Budget</legend>
         <div className="flex flex-wrap gap-2">
           {budgets.map((budget) => (
-            <label key={budget} className="cursor-pointer border border-brass/25 px-3 py-2 text-[11px] uppercase tracking-[0.16em] text-smoke has-[:checked]:border-brass has-[:checked]:text-paper">
+            <label
+              key={budget}
+              className="cursor-pointer border border-brass/25 px-3 py-2 text-[11px] uppercase tracking-[0.16em] text-smoke has-[:checked]:border-brass has-[:checked]:text-paper"
+            >
               <input className="sr-only" type="radio" name="budget" value={budget} required />
               {budget}
             </label>
@@ -61,19 +79,38 @@ export function IntakeForm() {
         </div>
       </fieldset>
       <label className="grid gap-2 text-[11px] uppercase tracking-[0.2em] text-brass">
-        Date you need it live
-        <input name="deadline" className="border-b border-brass/25 bg-transparent py-3 text-base tracking-normal text-paper outline-none focus:border-brass" />
+        What should a visitor believe after 15 seconds?
+        <textarea
+          required
+          name="belief"
+          rows={4}
+          className="border border-brass/25 bg-transparent p-3 text-base leading-7 tracking-normal text-paper outline-none focus:border-brass"
+        />
       </label>
       <label className="grid gap-2 text-[11px] uppercase tracking-[0.2em] text-brass">
-        What should a visitor believe after fifteen seconds?
-        <textarea name="belief" rows={4} className="border border-brass/25 bg-transparent p-3 text-base tracking-normal text-paper outline-none focus:border-brass" />
+        Three sites you love. Three you refuse.
+        <textarea
+          name="references"
+          rows={3}
+          className="border border-brass/25 bg-transparent p-3 text-base leading-7 tracking-normal text-paper outline-none focus:border-brass"
+        />
       </label>
-      {status === "error" ? (
-        <p className="text-sm text-brass">Send failed. Email hello@aether.studio instead.</p>
-      ) : null}
-      <button type="submit" disabled={status === "sending"} className="justify-self-start border border-brass/50 bg-brass px-6 py-3 text-[11px] uppercase tracking-[0.22em] text-ink hover:bg-paper disabled:opacity-60">
+      <button
+        type="submit"
+        disabled={status === "sending"}
+        className="justify-self-start border border-brass/50 bg-brass px-6 py-3 text-[11px] uppercase tracking-[0.22em] text-ink disabled:opacity-60"
+      >
         {status === "sending" ? "Sending…" : "Send the brief"}
       </button>
+      {status === "error" ? (
+        <p role="alert" className="text-sm leading-7 text-brass">
+          Could not send from the form. Email{" "}
+          <a className="underline hover:text-paper" href="mailto:hello@aether.studio">
+            hello@aether.studio
+          </a>{" "}
+          with the same brief.
+        </p>
+      ) : null}
     </form>
   );
 }
