@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prebuild": "node scripts/decode-plates.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -22,8 +23,5 @@
     "eslint-config-next": "16.3.5",
     "tailwindcss": "^4",
     "typescript": "^5"
-  },
-  "engines": {
-    "node": ">=20"
   }
 }
