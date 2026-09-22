@@ -4,7 +4,7 @@ export default function ApproachLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="paper-page bg-paper text-ink" data-cursor="Approach">
+    <div className="paper-page bg-paper text-ink">
       {children}
     </div>
   );

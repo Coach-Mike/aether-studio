@@ -53,22 +53,16 @@ body {
     transform: none !important;
     animation: none !important;
   }
+
   .group:hover img {
     transform: none !important;
   }
 }
 
-@media (pointer: fine) {
-  body {
-    cursor: none;
-  }
-  a,
-  button,
-  input,
-  label,
-  [role="button"] {
-    cursor: none;
-  }
+a,
+button,
+[role="button"] {
+  cursor: pointer;
 }
 
 @keyframes rise {

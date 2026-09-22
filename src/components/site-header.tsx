@@ -8,7 +8,6 @@ export function SiteHeader() {
         <Link
           href="/"
           className="font-display text-[1.35rem] tracking-[0.18em] text-paper"
-          data-cursor="Aether"
         >
           {site.wordmark}
         </Link>
