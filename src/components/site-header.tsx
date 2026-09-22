@@ -5,7 +5,11 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-30 border-b border-brass/15 bg-ink/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-5 py-4 md:px-10">
-        <Link href="/" className="font-display text-[1.35rem] tracking-[0.18em] text-paper">
+        <Link
+          href="/"
+          className="font-display text-[1.35rem] tracking-[0.18em] text-paper"
+          data-cursor="Aether"
+        >
           {site.wordmark}
         </Link>
         <nav aria-label="Primary" className="flex items-center gap-5 md:gap-8">

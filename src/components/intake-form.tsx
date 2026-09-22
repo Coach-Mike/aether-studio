@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const budgets = ["$3.5k–$6k Origin", "$6k–$12k Signature", "$12k–$28k Flagship", "Retainer"];
+const budgets = ["$3.5k–$6k Origin", "$6k–$12k Signature", "$12k–$28k Flagship", "Partner"];
 
 export function IntakeForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -29,7 +29,8 @@ export function IntakeForm() {
   if (status === "sent") {
     return (
       <p className="border border-brass/30 p-8 text-base leading-8 text-paper">
-        Received. We reply within two business days if the brief is a fit. If it is not, we will say so.
+        Received. We reply within two business days if the brief is a fit. If
+        it is not, we will say so.
       </p>
     );
   }
@@ -60,19 +61,19 @@ export function IntakeForm() {
         </div>
       </fieldset>
       <label className="grid gap-2 text-[11px] uppercase tracking-[0.2em] text-brass">
-        What should a visitor believe after 15 seconds?
-        <textarea required name="belief" rows={4} className="border border-brass/25 bg-transparent p-3 text-base leading-7 tracking-normal text-paper outline-none focus:border-brass" />
+        Date you need it live
+        <input name="deadline" className="border-b border-brass/25 bg-transparent py-3 text-base tracking-normal text-paper outline-none focus:border-brass" />
       </label>
       <label className="grid gap-2 text-[11px] uppercase tracking-[0.2em] text-brass">
-        Three sites you love. Three you refuse.
-        <textarea name="references" rows={3} className="border border-brass/25 bg-transparent p-3 text-base leading-7 tracking-normal text-paper outline-none focus:border-brass" />
+        What should a visitor believe after fifteen seconds?
+        <textarea name="belief" rows={4} className="border border-brass/25 bg-transparent p-3 text-base tracking-normal text-paper outline-none focus:border-brass" />
       </label>
-      <button type="submit" disabled={status === "sending"} className="justify-self-start border border-brass/50 bg-brass px-6 py-3 text-[11px] uppercase tracking-[0.22em] text-ink disabled:opacity-60">
+      {status === "error" ? (
+        <p className="text-sm text-brass">Send failed. Email hello@aether.studio instead.</p>
+      ) : null}
+      <button type="submit" disabled={status === "sending"} className="justify-self-start border border-brass/50 bg-brass px-6 py-3 text-[11px] uppercase tracking-[0.22em] text-ink hover:bg-paper disabled:opacity-60">
         {status === "sending" ? "Sending…" : "Send the brief"}
       </button>
-      {status === "error" ? (
-        <p role="alert" className="text-sm text-brass">Could not send. Email hello@aether.studio directly.</p>
-      ) : null}
     </form>
   );
 }

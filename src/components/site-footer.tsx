@@ -19,6 +19,16 @@ export function SiteFooter() {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link href="/journal" className="text-sm text-paper/80 hover:text-brass">
+                Journal
+              </Link>
+            </li>
+            <li>
+              <Link href="/contact" className="text-sm text-paper/80 hover:text-brass">
+                Contact
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="md:col-span-4">
@@ -30,14 +40,17 @@ export function SiteFooter() {
               {site.email}
             </a>
           </p>
-          <p className="mt-6 text-xs text-smoke">
-            Client owns the domain, the repo, and the deploy at handoff.
+          <p className="mt-6 text-xs leading-6 text-smoke">
+            You own the domain, the files, and the hosting account at launch.
+            We stay as partner — not as landlord.
           </p>
         </div>
       </div>
       <div className="border-t border-brass/10">
         <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-3 px-5 py-4 text-[11px] uppercase tracking-[0.18em] text-smoke md:px-10">
-          <span>© {new Date().getFullYear()} {site.legal}</span>
+          <span>
+            © {new Date().getFullYear()} {site.legal}
+          </span>
           <span>Not a template house</span>
         </div>
       </div>
