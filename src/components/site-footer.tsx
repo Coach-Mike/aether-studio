@@ -34,8 +34,6 @@ export function SiteFooter() {
         <div className="md:col-span-4">
           <p className="text-[11px] uppercase tracking-[0.22em] text-brass">Studio</p>
           <p className="mt-4 text-sm leading-7 text-smoke">
-            {site.location}
-            <br />
             <a className="text-paper hover:text-brass" href={`mailto:${site.email}`}>
               {site.email}
             </a>

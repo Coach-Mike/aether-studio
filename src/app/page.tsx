@@ -10,19 +10,19 @@ export default function HomePage() {
     <div>
       <section className="bg-paper text-ink">
         <div className="grid min-h-[88vh] md:grid-cols-12">
-          <div className="relative min-h-[46vh] bg-paper-2 md:col-span-7 md:min-h-[88vh]">
+          <div className="relative min-h-[52vh] overflow-hidden bg-paper-2 md:col-span-7 md:min-h-[88vh]">
             <Image
               src="/plates/hero-letterpress.jpg"
               alt="Brass letterpress A on rag paper"
               fill
               priority
               sizes="(min-width: 768px) 58vw, 100vw"
-              className="object-cover object-[16%_center]"
+              className="origin-[18%_58%] scale-[1.72] object-cover object-[18%_58%] md:origin-center md:scale-[1.08] md:object-[16%_center]"
             />
           </div>
           <div className="flex flex-col justify-end px-5 py-14 md:col-span-5 md:justify-center md:px-10 md:py-24 lg:px-14">
             <p className="text-[11px] uppercase tracking-[0.32em] text-brass-dim">
-              {site.location} · Commissioned sites
+              Commissioned sites
             </p>
             <h1 className="mt-6 font-display text-[clamp(3rem,7vw,5.4rem)] leading-[0.9] tracking-[-0.03em]">
               Custom.

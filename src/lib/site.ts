@@ -7,7 +7,6 @@ export const site = {
   promise: "One-of-one company sites. Commissioned, not templated.",
   thesis:
     "A commissioned company site should feel like an object — ink, metal, paper — not a template wearing a logo.",
-  location: "Los Angeles",
   email: "hello@aether.studio",
 } as const;
 

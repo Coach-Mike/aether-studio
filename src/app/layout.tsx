@@ -55,7 +55,6 @@ const jsonLd = {
   url: site.url,
   email: site.email,
   areaServed: "United States",
-  address: { "@type": "PostalAddress", addressLocality: "Los Angeles", addressRegion: "CA" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
