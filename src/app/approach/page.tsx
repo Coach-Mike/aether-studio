@@ -1,55 +1,57 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { SectionLabel } from "@/components/section-label";
 
 export const metadata: Metadata = {
   title: "Approach",
-  description: "How Aether commissions a flagship site — system first, then code.",
+  description: "How Aether commissions a flagship — discover, invent, ship, stay.",
 };
 
 const phases = [
-  ["Qualify", "Budget, decision-maker, deadline, why now."],
-  ["Discovery", "Offer, audience, proof, competitors, constraints."],
-  ["Art direction", "Visual system plus two homepage directions. Pick one."],
-  ["Narrative", "Homepage story, page map, CTAs."],
-  ["Build", "Next.js, assets, motion, forms."],
-  ["Staging", "Preview URL. Critique against craft and conversion."],
-  ["QA", "Design, accessibility, performance, SEO, mobile, forms."],
-  ["Launch", "Domain, analytics, redirects, Search Console."],
+  ["Discover", "Offer, audience, proof, the sites they love and the ones they refuse."],
+  ["Invent", "Visual system plus two homepage directions. Pick one. Then the story."],
+  ["Ship", "Build, stage, critique, launch — on accounts the client owns."],
+  ["Stay", "Partner after the URL is live. Pages, experiments, care."],
 ];
 
 export default function ApproachPage() {
   return (
     <div className="px-5 py-16 md:px-10 md:py-24">
-      <SectionLabel index="03">Approach</SectionLabel>
-      <h1 className="mt-6 max-w-4xl font-display text-5xl tracking-tight md:text-7xl">System first. Then the site.</h1>
-      <p className="mt-8 max-w-2xl text-lg leading-8 text-smoke">
-        AI is the engine room, not the brand. The process is proprietary: research, Grok Code, Grok Imagine, and a brutal design standard. The client never buys “an AI website.” They commission a flagship.
+      <p className="flex items-center gap-3 text-[11px] uppercase tracking-[0.26em] text-brass-dim">
+        <span className="tabular-nums">03</span>
+        <span className="h-px w-8 bg-brass/50" aria-hidden />
+        Approach
       </p>
-      <section className="mt-20 grid gap-10 md:grid-cols-12">
-        <div className="md:col-span-4">
-          <h2 className="text-[11px] uppercase tracking-[0.22em] text-brass">Visual lock</h2>
-        </div>
-        <ul className="space-y-4 text-base leading-8 text-paper/85 md:col-span-8">
-          <li>One distinctive display face. One refined text face. No Inter-as-luxury.</li>
-          <li>One dominant field. One accent used like jewelry. Paper and ink.</li>
-          <li>One material world — here: rag paper, brass type, darkroom grain.</li>
-          <li>Motion that can sit still. Reduced-motion is a first-class path.</li>
-        </ul>
-      </section>
-      <ol className="mt-20 divide-y divide-brass/15 border-y border-brass/15">
+      <h1 className="mt-6 max-w-4xl font-display text-5xl tracking-tight md:text-7xl">
+        System first. Then the site.
+      </h1>
+      <p className="mt-8 max-w-2xl text-lg leading-8 text-ink/70">
+        The client never buys a toolkit. They commission a flagship. Process is
+        proprietary. The public promise is simpler: we invent it, we ship it,
+        you own it, we stay.
+      </p>
+      <div className="relative mt-16 aspect-[16/7] overflow-hidden bg-paper-2">
+        <Image src="/plates/paper-ink.jpg" alt="Rag paper, brass rule, a drop of ink" fill className="object-cover" sizes="100vw" />
+      </div>
+      <p className="mt-3 text-[11px] uppercase tracking-[0.2em] text-ink/45">
+        Material brief — paper, brass, ink.
+      </p>
+      <ol className="mt-20 divide-y divide-ink/10 border-y border-ink/10">
         {phases.map(([name, copy], i) => (
-          <li key={name} className="grid gap-3 py-6 md:grid-cols-12 md:items-baseline">
-            <span className="font-mono text-xs text-brass md:col-span-1">0{i + 1}</span>
+          <li key={name} className="grid gap-3 py-7 md:grid-cols-12 md:items-baseline">
+            <span className="font-mono text-xs text-brass-dim md:col-span-1">0{i + 1}</span>
             <span className="font-display text-2xl md:col-span-3">{name}</span>
-            <span className="text-sm leading-7 text-smoke md:col-span-8">{copy}</span>
+            <span className="text-sm leading-7 text-ink/70 md:col-span-8">{copy}</span>
           </li>
         ))}
       </ol>
-      <p className="mt-16 max-w-2xl text-base leading-8 text-smoke">
-        Stack default: Next.js 16, React 19, TypeScript, Tailwind 4. Server Components first. Client only where the interaction earns it. No WordPress. No Webflow export as the product.
+      <p className="mt-16 max-w-2xl text-base leading-8 text-ink/70">
+        We do not sell templates or page builders. If two sites could swap logos
+        and still work, we failed.
       </p>
-      <Link href="/engage" className="mt-8 inline-block text-[11px] uppercase tracking-[0.22em] text-brass hover:text-paper">See packages →</Link>
+      <Link href="/engage" className="mt-8 inline-block text-[11px] uppercase tracking-[0.22em] text-brass-dim hover:text-ink">
+        See packages →
+      </Link>
     </div>
   );
 }
