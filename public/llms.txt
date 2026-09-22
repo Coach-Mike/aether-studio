@@ -1,0 +1,10 @@
+# Aether Studio
+
+> One-of-one digital flagships. Designed with Grok. Owned by you. Deployed from GitHub.
+
+Aether Studio commissions bespoke company websites for founder-led firms that sell expensive things. Not templates. Not WordPress themes. Not vibe-coded landing pages.
+
+- Work: /work
+- Approach: /approach
+- Engage: /engage
+- Contact: /contact
