@@ -32,7 +32,7 @@ export default function HomePage() {
               Yours.
             </h1>
             <p className="mt-6 max-w-sm text-base leading-8 text-ink/70">
-              {site.tagline}
+              {site.deck}
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-8">
               <Link

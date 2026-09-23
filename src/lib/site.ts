@@ -4,6 +4,7 @@ export const site = {
   legal: "Aether Studio",
   url: "https://aether.studio",
   tagline: "Custom. Premium. You own it. We invent it, ship it, and stay as partner.",
+  deck: "We invent the site, ship it in your name, and stay as partner.",
   promise: "One-of-one company sites. Commissioned, not templated.",
   thesis:
     "A commissioned company site should feel like an object — ink, metal, paper — not a template wearing a logo.",
