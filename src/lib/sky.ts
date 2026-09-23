@@ -1,0 +1,1 @@
+export const skyScript = `(function(){try{var a=['morning','day','dusk','night'];var q=new URLSearchParams(location.search).get('sky');var h=new Date().getHours();var s=a.indexOf(q)>-1?q:(h<5||h>=21?'night':h<11?'morning':h<17?'day':'dusk');document.documentElement.setAttribute('data-sky',s);}catch(e){}})();`;
