@@ -1,8 +1,8 @@
 const budgetLine: Record<string, string> = {
-  "$3.5k–$6k Origin": "an Origin page",
-  "$6k–$12k Signature": "a Signature Home",
-  "$12k–$28k Flagship": "a Flagship",
-  Partner: "a Partner retainer",
+  "$3.5k–$6k Origin": "Origin",
+  "$6k–$12k Signature": "Signature",
+  "$12k–$28k Flagship": "Flagship",
+  Partner: "Partner",
 };
 
 export type Brief = {
@@ -42,9 +42,9 @@ export function CommissionLetter({ brief }: { brief: Brief }) {
       </p>
       <div className="mt-8 space-y-6 text-base leading-8 text-ink/80">
         <p>
-          We have the brief for {brief.company}. You asked for {packageLine}.
+          We received the brief for {brief.company}. You asked for {packageLine}.
         </p>
-        <p>
+      <p>
           We read every inquiry. If this is a fit, you will hear from us within
           two business days — with a date, not a brochure. If it is not, we
           will say so.

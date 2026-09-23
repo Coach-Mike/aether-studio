@@ -8,7 +8,7 @@ const budgets = ["$3.5k–$6k Origin", "$6k–$12k Signature", "$12k–$28k Flag
 
 const previewBrief: Brief = {
   name: "Alex",
-  company: "the house you are building",
+  company: "Northshore",
   budget: "$12k–$28k Flagship",
 };
 
