@@ -3,6 +3,7 @@ import { Geist_Mono, Instrument_Sans, Instrument_Serif } from "next/font/google"
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { site } from "@/lib/site";
+import { skyScript } from "@/lib/sky";
 import "./globals.css";
 
 const instrumentSerif = Instrument_Serif({
@@ -61,8 +62,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      suppressHydrationWarning
+      data-sky="day"
       className={`${instrumentSerif.variable} ${instrumentSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: skyScript }} />
+      </head>
       <body className="relative flex min-h-full flex-col bg-ink text-paper">
         <script
           type="application/ld+json"

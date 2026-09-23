@@ -49,7 +49,7 @@ export function SiteFooter() {
           <span>
             © {new Date().getFullYear()} {site.legal}
           </span>
-          <span>Not a template house</span>
+          <span className="sky-label" />
         </div>
       </div>
     </footer>

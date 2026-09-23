@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-@theme inline {
+@theme {
   --color-ink: #0c0b09;
   --color-field: #141210;
   --color-paper: #ede6d9;
@@ -8,10 +8,43 @@
   --color-brass: #c4a574;
   --color-brass-dim: #8d7348;
   --color-smoke: #8a8276;
+}
+
+@theme inline {
   --color-line: color-mix(in oklab, var(--color-brass) 28%, transparent);
   --font-display: var(--font-instrument-serif);
   --font-sans: var(--font-instrument-sans);
   --font-mono: var(--font-geist-mono);
+}
+
+html[data-sky="morning"] {
+  --color-ink: #0c0d0e;
+  --color-field: #141516;
+  --color-paper: #e7e6e0;
+  --color-paper-2: #d8d6cf;
+  --color-brass: #b39a76;
+  --color-brass-dim: #7a6b52;
+  --color-smoke: #7d7c76;
+}
+
+html[data-sky="dusk"] {
+  --color-ink: #120e0b;
+  --color-field: #1c1612;
+  --color-paper: #f3e6d2;
+  --color-paper-2: #e6d2b4;
+  --color-brass: #d09a58;
+  --color-brass-dim: #a06b38;
+  --color-smoke: #9a8468;
+}
+
+html[data-sky="night"] {
+  --color-ink: #080706;
+  --color-field: #0e0c0a;
+  --color-paper: #d9cfbe;
+  --color-paper-2: #c9beab;
+  --color-brass: #c4a574;
+  --color-brass-dim: #8d7348;
+  --color-smoke: #7a7368;
 }
 
 html {
@@ -45,6 +78,14 @@ body {
   opacity: 0.09;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+html[data-sky="morning"] .grain {
+  opacity: 0.06;
+}
+
+html[data-sky="night"] .grain {
+  opacity: 0.13;
 }
 
 a,
@@ -137,10 +178,30 @@ button,
 .plate {
   background:
     radial-gradient(120% 80% at 20% 0%, color-mix(in oklab, var(--color-brass) 16%, transparent), transparent 55%),
-    linear-gradient(180deg, #1c1916 0%, #0f0e0c 100%);
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--color-field) 80%, white),
+      var(--color-ink)
+    );
 }
 
 .paper-page {
   color: var(--color-ink);
   background: var(--color-paper);
+}
+
+.sky-label::after {
+  content: "Midday paper";
+}
+
+html[data-sky="morning"] .sky-label::after {
+  content: "Morning light";
+}
+
+html[data-sky="dusk"] .sky-label::after {
+  content: "Dusk";
+}
+
+html[data-sky="night"] .sky-label::after {
+  content: "After hours";
 }
