@@ -16,36 +16,36 @@ export const plates = [
   {
     src: "/plates/hero-letterpress.jpg",
     caption: "Studio object — letterpress A.",
-    object: "object-[18%_58%]",
+    object: "origin-[18%_58%] scale-[1.35] object-[18%_58%]",
   },
   {
     src: "/plates/harvest-dusk.jpg",
     caption: "Harvest House — terrace at last light.",
-    object: "object-center",
+    object: "object-[center_65%]",
   },
   {
     src: "/plates/harvest-hearth.jpg",
-    caption: "Harvest House — hearth and the valley.",
-    object: "object-center",
+    caption: "Harvest House — window and the valley.",
+    object: "origin-left scale-[1.28] object-[12%_center]",
   },
   {
     src: "/plates/vale-pavilion.jpg",
     caption: "Vale & Stone — one chair.",
-    object: "object-center",
+    object: "object-[center_38%]",
   },
   {
     src: "/plates/meridian-desk.jpg",
-    caption: "Meridian — cotton paper, brass rule.",
+    caption: "Meridian — cotton paper, brass weight.",
     object: "object-center",
   },
   {
     src: "/plates/lumen-dusk.jpg",
     caption: "Study — last light.",
-    object: "object-center",
+    object: "origin-[18%_80%] scale-[1.45] object-[18%_80%]",
   },
   {
     src: "/plates/paper-ink.jpg",
     caption: "Material — rag paper, brass, ink.",
-    object: "object-center",
+    object: "origin-left scale-[1.35] object-[16%_center]",
   },
 ] as const;

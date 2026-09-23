@@ -38,12 +38,12 @@ export function Folio() {
       <div
         ref={root}
         tabIndex={0}
-        className="folio flex h-[100dvh] snap-y snap-mandatory flex-col overflow-y-auto md:snap-x md:flex-row md:overflow-x-auto md:overflow-y-hidden"
+        className="folio flex h-[100dvh] snap-x snap-mandatory flex-row overflow-x-auto overflow-y-hidden overscroll-x-contain"
         aria-label="Lookbook edition 01"
       >
         <section
           data-leaf
-          className="flex h-[100dvh] w-full shrink-0 snap-start flex-col justify-end px-5 pb-16 pt-24 md:w-[100vw] md:px-16 md:pb-20"
+          className="flex h-[100dvh] w-screen max-w-none shrink-0 snap-start flex-col justify-end px-5 pb-20 pt-24 md:px-16"
         >
           <p className="text-[11px] uppercase tracking-[0.28em] text-brass">
             Edition {edition.no} · {edition.plates} plates
@@ -53,7 +53,7 @@ export function Folio() {
           </h1>
           <p className="mt-6 max-w-md text-base leading-8 text-smoke">
             Forward this page. If the temperature is wrong, we are the wrong
-            studio. Swipe to turn.
+            studio. Swipe left to turn.
           </p>
           <dl className="mt-12 grid max-w-3xl gap-6 sm:grid-cols-2">
             {system.map(([name, copy]) => (
@@ -69,28 +69,25 @@ export function Folio() {
           <figure
             key={plate.src}
             data-leaf
-            className="relative h-[100dvh] w-full shrink-0 snap-start md:w-[100vw]"
+            className="relative h-[100dvh] w-screen max-w-none shrink-0 snap-start overflow-hidden"
           >
             <Image
               src={plate.src}
               alt={plate.caption}
               fill
-              priority={i === 0}
+              priority={i < 2}
               sizes="100vw"
               className={`object-cover ${plate.object}`}
             />
-            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink via-ink/50 to-transparent px-5 pb-16 pt-24 md:px-16">
-              <p className="font-mono text-[11px] tracking-[0.22em] text-brass">
-                {String(i + 1).padStart(2, "0")} / {String(plates.length).padStart(2, "0")}
-              </p>
-              <p className="mt-2 text-sm tracking-[0.04em] text-paper/90">{plate.caption}</p>
+            <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink via-ink/55 to-transparent px-5 pb-16 pt-24 md:px-16">
+              <p className="text-sm tracking-[0.04em] text-paper/90">{plate.caption}</p>
             </figcaption>
           </figure>
         ))}
 
         <section
           data-leaf
-          className="flex h-[100dvh] w-full shrink-0 snap-start flex-col justify-end px-5 pb-16 pt-24 md:w-[100vw] md:px-16 md:pb-20"
+          className="flex h-[100dvh] w-screen max-w-none shrink-0 snap-start flex-col justify-end px-5 pb-20 pt-24 md:px-16"
         >
           <p className="text-[11px] uppercase tracking-[0.28em] text-brass">Colophon</p>
           <p className="mt-6 max-w-lg font-display text-4xl tracking-tight md:text-6xl">
