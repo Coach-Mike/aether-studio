@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { IntakeForm } from "@/components/intake-form";
 import { SectionLabel } from "@/components/section-label";
 import { site } from "@/lib/site";
@@ -22,7 +23,9 @@ export default function ContactPage() {
         </p>
       </div>
       <div className="md:col-span-7">
-        <IntakeForm />
+        <Suspense>
+          <IntakeForm />
+        </Suspense>
       </div>
     </div>
   );

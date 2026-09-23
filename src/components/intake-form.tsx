@@ -1,16 +1,33 @@
 "use client";
 
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { CommissionLetter, type Brief } from "@/components/commission-letter";
 
 const budgets = ["$3.5k–$6k Origin", "$6k–$12k Signature", "$12k–$28k Flagship", "Partner"];
 
+const previewBrief: Brief = {
+  name: "Alex",
+  company: "the house you are building",
+  budget: "$12k–$28k Flagship",
+};
+
 export function IntakeForm() {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const params = useSearchParams();
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error" | "unconfigured">("idle");
+  const [brief, setBrief] = useState<Brief | null>(
+    params.get("preview") === "letter" ? previewBrief : null,
+  );
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
+    const next: Brief = {
+      name: String(data.name ?? ""),
+      company: String(data.company ?? ""),
+      budget: String(data.budget ?? ""),
+    };
     setStatus("sending");
     try {
       const res = await fetch("/api/contact", {
@@ -18,7 +35,12 @@ export function IntakeForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
+      if (res.status === 503) {
+        setStatus("unconfigured");
+        return;
+      }
       if (!res.ok) throw new Error("fail");
+      setBrief(next);
       setStatus("sent");
       form.reset();
     } catch {
@@ -26,13 +48,12 @@ export function IntakeForm() {
     }
   }
 
-  if (status === "sent") {
-    return (
-      <p className="border border-brass/30 p-8 text-base leading-8 text-paper">
-        Received. We reply within two business days if the brief is a fit. If
-        it is not, we will say so.
-      </p>
-    );
+  if (status === "sent" && brief) {
+    return <CommissionLetter brief={brief} />;
+  }
+
+  if (brief && params.get("preview") === "letter") {
+    return <CommissionLetter brief={brief} />;
   }
 
   return (
@@ -102,6 +123,15 @@ export function IntakeForm() {
       >
         {status === "sending" ? "Sending…" : "Send the brief"}
       </button>
+      {status === "unconfigured" ? (
+        <p role="alert" className="text-sm leading-7 text-brass">
+          The brief did not leave the studio — email is not wired yet. Write{" "}
+          <a className="underline hover:text-paper" href="mailto:hello@aether.studio">
+            hello@aether.studio
+          </a>{" "}
+          with the same note, then add RESEND_API_KEY on Vercel.
+        </p>
+      ) : null}
       {status === "error" ? (
         <p role="alert" className="text-sm leading-7 text-brass">
           Could not send from the form. Email{" "}
