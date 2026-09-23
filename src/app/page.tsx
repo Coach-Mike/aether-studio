@@ -5,36 +5,42 @@ import { SectionLabel } from "@/components/section-label";
 import { packages, partner, partnerRetainer, site } from "@/lib/site";
 import { cases } from "@/lib/work";
 
+const featured = cases[0];
+const studies = cases.slice(1);
+
 export default function HomePage() {
   return (
     <div>
       <section className="bg-paper text-ink">
         <div className="grid min-h-[88vh] md:grid-cols-12">
           <div className="relative min-h-[52vh] overflow-hidden bg-paper-2 md:col-span-7 md:min-h-[88vh]">
-            <Image
-              src="/plates/hero-letterpress.jpg"
-              alt="Brass letterpress A on rag paper"
-              fill
-              priority
-              sizes="(min-width: 768px) 58vw, 100vw"
-              className="origin-[18%_58%] scale-[1.72] object-cover object-[18%_58%] md:origin-center md:scale-[1.08] md:object-[16%_center]"
-            />
+            <div className="settle-photo absolute inset-0">
+              <Image
+                src="/plates/hero-letterpress.jpg"
+                alt="Brass letterpress A on rag paper"
+                fill
+                priority
+                sizes="(min-width: 768px) 58vw, 100vw"
+                className="origin-[18%_58%] scale-[1.72] object-cover object-[18%_58%] md:origin-center md:scale-[1.08] md:object-[16%_center]"
+              />
+            </div>
           </div>
           <div className="flex flex-col justify-end px-5 py-14 md:col-span-5 md:justify-center md:px-10 md:py-24 lg:px-14">
-            <p className="text-[11px] uppercase tracking-[0.32em] text-brass-dim">
+            <span className="draw hairline mb-8 block w-24" aria-hidden />
+            <p className="reveal reveal-1 text-[11px] uppercase tracking-[0.32em] text-brass-dim">
               Commissioned sites
             </p>
-            <h1 className="mt-6 font-display text-[clamp(3rem,7vw,5.4rem)] leading-[0.9] tracking-[-0.03em]">
+            <h1 className="reveal reveal-2 mt-6 font-display text-[clamp(3rem,7vw,5.4rem)] leading-[0.9] tracking-[-0.03em]">
               Custom.
               <br />
               Premium.
               <br />
               Yours.
             </h1>
-            <p className="mt-6 max-w-sm text-base leading-8 text-ink/70">
+            <p className="reveal reveal-3 mt-6 max-w-sm text-base leading-8 text-ink/70">
               {site.deck}
             </p>
-            <div className="mt-10 flex flex-wrap items-center gap-8">
+            <div className="reveal reveal-4 mt-10 flex flex-wrap items-center gap-8">
               <Link
                 href="/contact"
                 className="inline-flex items-center border border-ink/20 bg-ink px-6 py-3 text-[11px] uppercase tracking-[0.22em] text-paper transition-colors hover:bg-brass hover:text-ink"
@@ -42,10 +48,10 @@ export default function HomePage() {
                 Start a conversation
               </Link>
               <Link
-                href="/work"
+                href="/work/harvest-house"
                 className="text-[11px] uppercase tracking-[0.22em] text-ink/70 hover:text-ink"
               >
-                See the work →
+                See Harvest House →
               </Link>
             </div>
           </div>
@@ -78,8 +84,33 @@ export default function HomePage() {
             All plates →
           </Link>
         </div>
+
+        <Link href={`/work/${featured.slug}`} className="group block">
+          <div className="relative aspect-[16/11] overflow-hidden bg-field md:aspect-[21/9]">
+            <Image
+              src={featured.cover}
+              alt={featured.client}
+              fill
+              sizes="100vw"
+              className="object-cover object-center transition-transform duration-[1.6s] ease-out group-hover:scale-[1.03]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 px-5 pb-8 md:px-10 md:pb-10">
+              <p className="text-[11px] uppercase tracking-[0.22em] text-brass">
+                {featured.kind} · {featured.sector} · {featured.year}
+              </p>
+              <h2 className="mt-3 font-display text-4xl tracking-tight text-paper md:text-6xl">
+                {featured.client}
+              </h2>
+              <p className="mt-3 max-w-xl text-sm leading-7 text-paper/75 md:text-base">
+                {featured.title}
+              </p>
+            </div>
+          </div>
+        </Link>
+
         <ul>
-          {cases.map((item) => (
+          {studies.map((item) => (
             <li key={item.slug} className="border-t border-brass/15">
               <Link
                 href={`/work/${item.slug}`}

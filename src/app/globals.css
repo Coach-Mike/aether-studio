@@ -47,8 +47,73 @@ body {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+a,
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes settle-photo {
+  from {
+    opacity: 0;
+    transform: scale(1.07);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes draw {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.reveal {
+  animation: rise 0.95s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.reveal-1 {
+  animation-delay: 0.12s;
+}
+.reveal-2 {
+  animation-delay: 0.28s;
+}
+.reveal-3 {
+  animation-delay: 0.46s;
+}
+.reveal-4 {
+  animation-delay: 0.62s;
+}
+
+.settle-photo {
+  animation: settle-photo 1.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.draw {
+  transform-origin: left;
+  animation: draw 1.05s 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
+  .reveal,
+  .settle-photo,
+  .draw {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;
@@ -59,33 +124,12 @@ body {
   }
 }
 
-a,
-button,
-[role="button"] {
-  cursor: pointer;
-}
-
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.reveal {
-  animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
 .hairline {
   height: 1px;
   background: linear-gradient(
     90deg,
-    transparent,
-    color-mix(in oklab, var(--color-brass) 40%, transparent),
+    color-mix(in oklab, var(--color-brass) 55%, transparent),
+    color-mix(in oklab, var(--color-brass) 18%, transparent),
     transparent
   );
 }

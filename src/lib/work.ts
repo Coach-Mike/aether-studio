@@ -24,18 +24,18 @@ export const cases: CaseStudy[] = [
     year: "2026",
     kind: "Commission",
     title: "A hilltop house that books itself — without looking like an OTA.",
-    lede: "Eighteen acres in the Temecula foothills. Slow mornings, firelit evenings, wellness woven through the stay. The site had to feel like arriving, not browsing.",
+    lede: "Eighteen private acres in the Temecula foothills. Four bedrooms. A Nordic spa cycle under open sky. The site had to feel like arriving — not browsing a rental grid.",
     problem:
-      "Hospitality on the internet defaults to carousels, badge soup, and a booking widget fighting the photography. The land is better than most templates will ever say.",
+      "Hospitality on the internet defaults to amenity badges, review soup, and a booking widget fighting the photography. Guests were meeting the house on Airbnb first. The land is better than a listing will ever say.",
     direction:
-      "Treat the site as dusk on the terrace. One house, one horizon, rates in plain type. Direct reservation as a quiet close — not a sticky bar borrowed from an OTA.",
+      "Treat the site as dusk on the terrace. One house, one horizon, the stay written at the pace of the place. Direct reservation as a quiet close — confirmed by the hosts, not a sticky bar borrowed from an OTA.",
     decisions: [
-      "Led with the hill and the fire, not a grid of amenities.",
-      "Wrote the stay in the pace of the place — seasons, not slogans.",
-      "Kept the reservation path short enough to finish at 11pm on a phone.",
+      "Led with the hill and the fire, not a grid of amenities. The Nordic cycle — hot tub, cold plunge, barrel sauna — sits in the story, not a checklist.",
+      "Wrote the stay in seasons and stillness. “Stillness lives differently here.” No slogans that could sit on any vineyard rental.",
+      "Kept the reservation path short enough to finish at eleven on a phone. Calendar, dates, a note to the hosts. No account wall.",
     ],
     result:
-      "The URL is the property. Guests arrive already in the temperature of the house.",
+      "The URL is the property. Guests arrive already in the temperature of the house — gated drive, valley turning gold, a fire under pepper trees.",
     cover: "/plates/harvest-dusk.jpg",
     plates: [
       { src: "/plates/harvest-dusk.jpg", caption: "Terrace at last light, Temecula foothills." },
