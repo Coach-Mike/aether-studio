@@ -14,7 +14,7 @@ const previewBrief: Brief = {
 
 export function IntakeForm() {
   const params = useSearchParams();
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error" | "unconfigured">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "held" | "error">("idle");
   const [brief, setBrief] = useState<Brief | null>(
     params.get("preview") === "letter" ? previewBrief : null,
   );
@@ -28,6 +28,7 @@ export function IntakeForm() {
       company: String(data.company ?? ""),
       budget: String(data.budget ?? ""),
     };
+    setBrief(next);
     setStatus("sending");
     try {
       const res = await fetch("/api/contact", {
@@ -36,11 +37,10 @@ export function IntakeForm() {
         body: JSON.stringify(data),
       });
       if (res.status === 503) {
-        setStatus("unconfigured");
+        setStatus("held");
         return;
       }
       if (!res.ok) throw new Error("fail");
-      setBrief(next);
       setStatus("sent");
       form.reset();
     } catch {
@@ -48,8 +48,22 @@ export function IntakeForm() {
     }
   }
 
-  if (status === "sent" && brief) {
-    return <CommissionLetter brief={brief} />;
+  if ((status === "sent" || status === "held") && brief) {
+    return (
+      <div>
+        <CommissionLetter brief={brief} />
+        {status === "held" ? (
+          <p className="mx-auto mt-6 max-w-2xl text-center text-sm leading-7 text-brass">
+            The letter is on your screen. Email is not wired on this deploy yet —
+            also send the brief to{" "}
+            <a className="underline hover:text-paper" href="mailto:hello@aether.studio">
+              hello@aether.studio
+            </a>
+            .
+          </p>
+        ) : null}
+      </div>
+    );
   }
 
   if (brief && params.get("preview") === "letter") {
@@ -123,15 +137,6 @@ export function IntakeForm() {
       >
         {status === "sending" ? "Sending…" : "Send the brief"}
       </button>
-      {status === "unconfigured" ? (
-        <p role="alert" className="text-sm leading-7 text-brass">
-          The brief did not leave the studio — email is not wired yet. Write{" "}
-          <a className="underline hover:text-paper" href="mailto:hello@aether.studio">
-            hello@aether.studio
-          </a>{" "}
-          with the same note, then add RESEND_API_KEY on Vercel.
-        </p>
-      ) : null}
       {status === "error" ? (
         <p role="alert" className="text-sm leading-7 text-brass">
           Could not send from the form. Email{" "}
