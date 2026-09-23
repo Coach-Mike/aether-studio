@@ -60,14 +60,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-body:has(.folio) {
-  overflow: hidden;
-}
-
-body:has(.folio) footer {
-  display: none;
-}
-
 ::selection {
   background: color-mix(in oklab, var(--color-brass) 45%, transparent);
   color: var(--color-ink);
@@ -216,6 +208,7 @@ html[data-sky="night"] .sky-label::after {
 
 .folio {
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 
 .folio::-webkit-scrollbar {
